@@ -1,4 +1,4 @@
-package com.apartment.slot.modal.user.creditcard;
+package com.apartment.slot.modal.apartment;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -6,27 +6,16 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 @Entity
-@Table(name = "credit_card")
-@Data
-@Builder
-@AllArgsConstructor
+@Table(name = "price_history")
+@SuperBuilder
 @NoArgsConstructor
-public class CreditCard {
+public class PriceHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
     private long id;
-    private String cardNumber;
-    private int monthOfExpire;
-    private int yearOfExpire;
-    private String cvv;
-    private boolean isActive;
-    private String ownerName;
-    private String ownerSecondName;
 }

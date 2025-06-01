@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+
+        <!-- database connection properties -->
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://127.0.0.1:5432/apartment-slots-db</property>
+        <property name="hibernate.connection.username">admin</property>
+        <property name="hibernate.connection.password">secret</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+        <property name="hibernate.hbm2ddl.auto">create-drop</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="hibernate.connection.autocommit">false</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+
+        <property name="hibernate.hikari.connectionTimeout">1000</property>
+        <property name="hibernate.hikari.minimumIdle">10</property>
+        <property name="hibernate.hikari.maximumPoolSize">20</property>
+        <property name="hibernate.hikari.idleTimeout">300000</property>
+        <property name="hibernate.connection.provider_class">org.hibernate.hikaricp.internal.HikariCPConnectionProvider</property>
+        <property name="hibernate.connection.isolation">2</property>
+        <!-- add annotated resources here -->
+        <mapping class="com.apartment.slot.modal.entity.order.CustomerSingleDeliveryOrder" />
+        <mapping class="com.apartment.slot.modal.entity.order.DeliveryArticularItemQuantity" />
+        <mapping class="com.apartment.slot.modal.entity.order.OrderStatus" />
+
+        <mapping class="com.apartment.slot.modal.entity.payment.PaymentMethod" />
+        <mapping class="com.apartment.slot.modal.entity.payment.PaymentStatus" />
+        <mapping class="com.apartment.slot.modal.entity.payment.CurrencyCoefficient" />
+        <mapping class="com.apartment.slot.modal.entity.payment.MultiCurrencyPriceInfo" />
+        <mapping class="com.apartment.slot.modal.entity.payment.Payment" />
+
+        <mapping class="com.apartment.slot.modal.entity.address.Address" />
+        <mapping class="com.apartment.slot.modal.entity.address.UserAddress" />
+        <mapping class="com.apartment.slot.modal.entity.address.Country" />
+
+        <mapping class="com.apartment.slot.modal.entity.option.TimeDurationOption" />
+        <mapping class="com.apartment.slot.modal.entity.option.ZoneOption" />
+        <mapping class="com.apartment.slot.modal.entity.delivery.DeliveryType" />
+        <mapping class="com.apartment.slot.modal.entity.delivery.Delivery" />
+
+        <mapping class="com.apartment.slot.modal.entity.price.Currency" />
+        <mapping class="com.apartment.slot.modal.entity.price.Price" />
+        <mapping class="com.apartment.slot.modal.entity.payment.CreditCard" />
+        <mapping class="com.apartment.slot.modal.entity.user.UserCreditCard" />
+
+        <mapping class="com.apartment.slot.modal.entity.item.Discount" />
+        <mapping class="com.apartment.slot.modal.entity.payment.CommissionValue" />
+        <mapping class="com.apartment.slot.modal.entity.payment.MinMaxCommission" />
+        <mapping class="com.apartment.slot.modal.entity.payment.CurrencyCoefficient" />
+        <mapping class="com.apartment.slot.modal.entity.payment.MultiCurrencyPriceInfo" />
+        <mapping class="com.apartment.slot.modal.entity.payment.Payment" />
+
+        <mapping class="com.apartment.slot.modal.entity.item.AvailabilityStatus" />
+        <mapping class="com.apartment.slot.modal.entity.item.Brand" />
+        <mapping class="com.apartment.slot.modal.entity.item.Category" />
+        <mapping class="com.apartment.slot.modal.entity.item.ItemType" />
+        <mapping class="com.apartment.slot.modal.entity.item.ArticularStatus" />
+
+        <mapping class="com.apartment.slot.modal.entity.post.Post" />
+
+        <mapping class="com.apartment.slot.modal.apartment.option.OptionItem" />
+        <mapping class="com.apartment.slot.modal.entity.option.OptionGroup" />
+
+        <mapping class="com.apartment.slot.modal.entity.item.ArticularItem" />
+        <mapping class="com.apartment.slot.modal.entity.item.ItemData" />
+        <mapping class="com.apartment.slot.modal.entity.item.Item" />
+        <mapping class="com.apartment.slot.modal.entity.item.ArticularItemQuantityPrice" />
+        <mapping class="com.apartment.slot.modal.entity.item.ArticularItemQuantity" />
+
+        <mapping class="com.apartment.slot.modal.entity.message.MessageType" />
+        <mapping class="com.apartment.slot.modal.entity.message.MessageStatus" />
+        <mapping class="com.apartment.slot.modal.entity.message.MessageTemplate" />
+        <mapping class="com.apartment.slot.modal.entity.message.Message" />
+        <mapping class="com.apartment.slot.modal.entity.message.MessageBox" />
+
+        <mapping class="com.apartment.slot.modal.entity.user.Device" />
+        <mapping class="com.apartment.slot.modal.entity.user.OrderHistory" />
+        <mapping class="com.apartment.slot.modal.entity.user.UserDetails" />
+        <mapping class="com.apartment.slot.modal.entity.user.ContactInfo" />
+        <mapping class="com.apartment.slot.modal.entity.user.CountryPhoneCode" />
+        <mapping class="com.apartment.slot.modal.entity.user.ContactPhone" />
+
+        <mapping class="com.apartment.slot.modal.entity.review.ReviewComment" />
+        <mapping class="com.apartment.slot.modal.entity.review.Review" />
+        <mapping class="com.apartment.slot.modal.entity.review.Rating" />
+        <mapping class="com.apartment.slot.modal.entity.review.ReviewStatus" />
+
+    </session-factory>
+</hibernate-configuration>

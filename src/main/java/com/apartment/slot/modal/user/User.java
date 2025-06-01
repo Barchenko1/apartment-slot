@@ -3,26 +3,25 @@ package com.apartment.slot.modal.user;
 import com.apartment.slot.modal.user.creditcard.UserCreditCard;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
 
 import java.util.HashSet;
 import java.util.Set;
 
-@MappedSuperclass
+@Entity
 @Data
-@SuperBuilder
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
@@ -37,17 +36,15 @@ public class User {
     @Column(nullable = false)
     private long dateOfCreate;
     private boolean isActive;
-    private boolean isEmailVerified;
-    private boolean isContactPhoneVerified;
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "contactinfo_id")
     private ContactInfo contactInfo;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "userdetails_id")
+    @JoinColumn(name = "user_id")
     @Builder.Default
     private Set<Device> devices = new HashSet<>();
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "userdetails_id")
+    @JoinColumn(name = "user_id")
     @Builder.Default
     private Set<UserCreditCard> userCreditCards = new HashSet<>();
 }

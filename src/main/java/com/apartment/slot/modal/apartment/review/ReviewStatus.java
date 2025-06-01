@@ -1,6 +1,6 @@
 package com.apartment.slot.modal.apartment.review;
 
-import com.b2c.prototype.modal.base.constant.AbstractConstantEntity;
+import com.apartment.slot.modal.base.AbstractConstantEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;

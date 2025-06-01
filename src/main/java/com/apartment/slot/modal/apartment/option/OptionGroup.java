@@ -1,8 +1,18 @@
 package com.apartment.slot.modal.apartment.option;
 
-import com.b2c.prototype.modal.base.constant.AbstractConstantEntity;
-import jakarta.persistence.*;
-import lombok.*;
+import com.apartment.slot.modal.base.AbstractConstantEntity;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import java.util.ArrayList;
@@ -28,22 +38,6 @@ import java.util.List;
                 query = "SELECT og FROM OptionGroup og " +
                         "WHERE og.value = : value"
         ),
-        @NamedQuery(
-                name = "OptionGroup.all",
-                query = "SELECT og FROM OptionGroup og"
-        ),
-        @NamedQuery(
-                name = "OptionGroup.withOptionItemsAndArticularItems",
-                query = "SELECT DISTINCT og FROM OptionGroup og " +
-                        "LEFT JOIN FETCH og.optionItems oi " +
-                        "LEFT JOIN FETCH oi.articularItems ai " +
-                        "LEFT JOIN FETCH ai.optionItems ao " +
-                        "LEFT JOIN FETCH ai.totalPrice t " +
-                        "LEFT JOIN FETCH ai.fullPrice f " +
-                        "LEFT JOIN FETCH t.currency c1 " +
-                        "LEFT JOIN FETCH f.currency c2 " +
-                        "WHERE og.value = :value"
-        )
 })
 @Data
 @SuperBuilder

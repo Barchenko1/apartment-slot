@@ -1,8 +1,16 @@
 package com.apartment.slot.modal.apartment.option;
 
-import com.b2c.prototype.modal.base.constant.AbstractConstantEntity;
-import com.b2c.prototype.modal.entity.price.Price;
-import jakarta.persistence.*;
+import com.apartment.slot.modal.apartment.price.Price;
+import com.apartment.slot.modal.base.AbstractConstantEntity;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
