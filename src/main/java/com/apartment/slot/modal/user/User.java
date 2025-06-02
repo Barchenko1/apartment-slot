@@ -11,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,6 +21,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Table(name = "app_user")
 @Data
 @Builder
 @AllArgsConstructor
@@ -29,7 +31,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
     private long id;
-    @Column(name = "user_id", nullable = false, unique = true, updatable = false)
+    @Column(name = "user_uuid", nullable = false, unique = true, updatable = false)
     private String userId;
     @Column(nullable = false, unique = true)
     private String username;

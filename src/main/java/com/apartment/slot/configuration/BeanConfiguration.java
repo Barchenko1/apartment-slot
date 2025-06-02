@@ -5,15 +5,14 @@ import com.tm.core.configuration.dbType.DatabaseType;
 import com.tm.core.configuration.dbType.DatabaseTypeConfiguration;
 import com.tm.core.configuration.entityManager.EntityManagerFactoryManager;
 import com.tm.core.configuration.entityManager.IEntityManagerFactoryManager;
-import com.tm.core.configuration.session.ISessionFactoryManager;
-import com.tm.core.configuration.session.SessionFactoryManager;
 import com.tm.core.finder.manager.EntityMappingManager;
 import com.tm.core.finder.manager.IEntityMappingManager;
 import com.tm.core.finder.scanner.EntityScanner;
 import com.tm.core.finder.scanner.IEntityScanner;
 import com.tm.core.process.dao.IFetchHandler;
 import com.tm.core.process.dao.fetch.EntityManagerFetchHandler;
-import com.tm.core.process.dao.fetch.SessionFetchHandler;
+import com.tm.core.process.dao.generic.IGenericDao;
+import com.tm.core.process.dao.generic.entityManager.GenericEntityManagerDao;
 import com.tm.core.process.dao.query.IQueryService;
 import com.tm.core.process.dao.query.QueryService;
 import com.tm.core.process.manager.generic.IGenericOperationManager;
@@ -60,24 +59,29 @@ public class BeanConfiguration {
 
     @Bean
     @DependsOn({"entityMappingManager"})
-    public IEntityScanner entityScanner() {
-        return new EntityScanner(entityMappingManager(), entityPackagePath);
+    public IEntityScanner entityScanner(IEntityMappingManager entityMappingManager) {
+        return new EntityScanner(entityMappingManager, entityPackagePath);
     }
 
     @Bean
     @DependsOn({"entityScanner"})
-    public IQueryService queryService() {
-        return new QueryService(entityMappingManager());
+    public IQueryService queryService(IEntityMappingManager entityMappingManager) {
+        return new QueryService(entityMappingManager);
     }
 
     @Bean
-    public IFetchHandler fetchHandler(EntityManager entityManager) {
-        return new EntityManagerFetchHandler(entityManager, queryService());
+    public IFetchHandler fetchHandler(EntityManager entityManager, IQueryService queryService) {
+        return new EntityManagerFetchHandler(entityManager, queryService);
     }
 
-//    @Bean
-//    public IGenericOperationManager genericOperationManager(SessionFactory sessionFactory) {
-//        return new GenericOperationManager(sessionFactory, entityPackagePath);
-//    }
+    @Bean
+    public IGenericDao genericDao(EntityManager entityManager) {
+        return new GenericEntityManagerDao(entityManager, entityPackagePath);
+    }
+
+    @Bean
+    public IGenericOperationManager genericOperationManager(IGenericDao genericDao) {
+        return new GenericOperationManager(genericDao);
+    }
 
 }

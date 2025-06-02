@@ -1,0 +1,13 @@
+entity:
+  package:
+    path: com.apartment.slot.modal
+spring:
+  config:
+    import: optional:file:application-secrets.yml
+  application:
+    name: apartment-slots
+  datasource:
+    url: ${DB_URL}
+    driver-class-name: org.postgresql.Driver
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}

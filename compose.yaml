@@ -1,5 +1,5 @@
 services:
-  postgres_client:
+  postgres-client:
     image: 'postgres:latest'
     environment:
       - 'POSTGRES_DB=apartment-slots-db'
@@ -7,7 +7,7 @@ services:
       - 'POSTGRES_USER=admin'
     ports:
       - '5432:5432'
-  postgres_test_client:
+  postgres-test-client:
     image: 'postgres:latest'
     environment:
       - 'POSTGRES_DB=test-apartment-slots-db'

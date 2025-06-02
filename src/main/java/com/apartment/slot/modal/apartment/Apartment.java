@@ -36,7 +36,7 @@ public class Apartment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
     private long id;
-    @Column(name = "apartment_id", unique = true, nullable = false)
+    @Column(name = "apartment_uuid", unique = true, nullable = false)
     private String apartmentId;
     private long dateOfCreate;
     private String apartmentTitle;

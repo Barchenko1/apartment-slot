@@ -1,4 +1,4 @@
-package com.apartment.slot.modal.apartment;
+package com.apartment.slot.modal.apartment.address;
 
 import com.apartment.slot.modal.base.AbstractConstantEntity;
 import jakarta.persistence.Entity;

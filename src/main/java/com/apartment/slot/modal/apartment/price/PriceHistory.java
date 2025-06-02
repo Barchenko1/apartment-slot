@@ -1,4 +1,4 @@
-package com.apartment.slot.modal.apartment;
+package com.apartment.slot.modal.apartment.price;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
