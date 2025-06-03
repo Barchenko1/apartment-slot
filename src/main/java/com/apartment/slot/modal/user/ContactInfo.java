@@ -28,9 +28,9 @@ public class ContactInfo {
     private String firstName;
     private String lastName;
     private String email;
+    private boolean isEmailVerified;
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "contact_phone_id")
     private ContactPhone contactPhone;
-    private boolean isEmailVerified;
     private boolean isContactPhoneVerified;
 }

@@ -11,7 +11,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -40,20 +39,11 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
     private long id;
-    @Column(name = "reviewId", unique = true, nullable = false)
+    @Column(name = "review_uuid", unique = true, nullable = false)
     private String reviewId;
-    private String title;
-    private String message;
+    private String comment;
     private long dateOfCreate;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "review_status_id")
-    private ReviewStatus status;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(name = "rating_id")
     private Rating rating;
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "review_id")
-    @Builder.Default
-    @ToString.Exclude
-    private List<ReviewComment> comments = new ArrayList<>();
 }

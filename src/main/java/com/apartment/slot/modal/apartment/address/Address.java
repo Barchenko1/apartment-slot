@@ -1,5 +1,6 @@
 package com.apartment.slot.modal.apartment.address;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -8,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -29,7 +31,9 @@ public class Address {
     private String city;
     private String street;
     private String buildingNumber;
-    private int florNumber;
     private int apartmentNumber;
     private String zipCode;
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "mapcoordinate_id")
+    private MapCoordinate mapCoordinate;
 }

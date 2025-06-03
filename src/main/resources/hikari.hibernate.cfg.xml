@@ -26,22 +26,23 @@
         <property name="hibernate.connection.isolation">2</property>
         <!-- add annotated resources here -->
         <mapping class="com.apartment.slot.modal.apartment.address.Address" />
-        <mapping class="com.apartment.slot.modal.apartment.address.UserAddress" />
         <mapping class="com.apartment.slot.modal.apartment.address.Country" />
+        <mapping class="com.apartment.slot.modal.apartment.address.MapCoordinate" />
 
         <mapping class="com.apartment.slot.modal.apartment.price.Currency" />
         <mapping class="com.apartment.slot.modal.apartment.price.Price" />
+        <mapping class="com.apartment.slot.modal.apartment.price.PriceType" />
+        <mapping class="com.apartment.slot.modal.apartment.price.PriceHistory" />
 
         <mapping class="com.apartment.slot.modal.user.creditcard.CreditCard" />
         <mapping class="com.apartment.slot.modal.user.creditcard.UserCreditCard" />
-
-        <mapping class="com.apartment.slot.modal.post.Post" />
 
         <mapping class="com.apartment.slot.modal.apartment.option.OptionItem" />
         <mapping class="com.apartment.slot.modal.apartment.option.OptionGroup" />
 
         <mapping class="com.apartment.slot.modal.apartment.Apartment" />
         <mapping class="com.apartment.slot.modal.apartment.ApartmentStatus" />
+        <mapping class="com.apartment.slot.modal.apartment.PropertyType" />
 
         <mapping class="com.apartment.slot.modal.user.Device" />
         <mapping class="com.apartment.slot.modal.user.User" />
@@ -50,10 +51,19 @@
         <mapping class="com.apartment.slot.modal.user.phone.CountryPhoneCode" />
         <mapping class="com.apartment.slot.modal.user.phone.ContactPhone" />
 
-        <mapping class="com.apartment.slot.modal.apartment.review.ReviewComment" />
+        <mapping class="com.apartment.slot.modal.slot.TimeDuration" />
+        <mapping class="com.apartment.slot.modal.slot.Slot" />
+        <mapping class="com.apartment.slot.modal.slot.UserReview" />
+
         <mapping class="com.apartment.slot.modal.apartment.review.Review" />
         <mapping class="com.apartment.slot.modal.apartment.review.Rating" />
-        <mapping class="com.apartment.slot.modal.apartment.review.ReviewStatus" />
+
+        <mapping class="com.apartment.slot.modal.document.DocumentStatus" />
+        <mapping class="com.apartment.slot.modal.document.DocumentTemplate" />
+        <mapping class="com.apartment.slot.modal.document.Document" />
+        <mapping class="com.apartment.slot.modal.document.DocumentHistory" />
+        <mapping class="com.apartment.slot.modal.document.SubscriberData" />
+        <mapping class="com.apartment.slot.modal.document.UserData" />
 
     </session-factory>
 </hibernate-configuration>

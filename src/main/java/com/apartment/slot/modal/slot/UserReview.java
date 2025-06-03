@@ -1,6 +1,7 @@
-package com.apartment.slot.modal.apartment.price;
+package com.apartment.slot.modal.slot;
 
-import com.apartment.slot.modal.apartment.Apartment;
+import com.apartment.slot.modal.apartment.review.Review;
+import com.apartment.slot.modal.user.User;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -17,27 +18,21 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
 @Entity
-@Table(name = "price_history")
+@Table(name = "user_review")
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
-public class PriceHistory {
+@NoArgsConstructor
+public class UserReview {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
     private long id;
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "price_id", nullable = false)
-    private Price price;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "price_type_id")
-    private PriceType priceType;
-    private Date dateOfUpdate;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "apartment_id", nullable = false)
-    private Apartment apartment;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE})
+    @JoinColumn(name = "app_user_id")
+    private User user;
+    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "review_id")
+    private Review review;
 }

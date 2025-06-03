@@ -42,11 +42,11 @@ public class User {
     @JoinColumn(name = "contactinfo_id")
     private ContactInfo contactInfo;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "app_user_id")
     @Builder.Default
     private Set<Device> devices = new HashSet<>();
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "app_user_id")
     @Builder.Default
     private Set<UserCreditCard> userCreditCards = new HashSet<>();
 }
